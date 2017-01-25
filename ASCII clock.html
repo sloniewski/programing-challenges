@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<head>
+	<title>ASCII Clock</title>
+<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+
+<script>
+
+ function G(element){
+  if (typeof(element)=="object") {
+   return element;
+  }else{
+   return document.getElementById(element);
+  }}
+
+ function S(element){
+  return document.getElementById(element).style;
+  }
+</script>
+
+<style>
+body{
+	font-family: 'VT323', monospace;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="hours" class="time"></div>
+<div id="minutes" class="time"></div>
+<div id="seconds" class="time"></div>
+
+<div id="c_one" class="time"></div>
+<div id="c_two" class="time"></div>
+<div id="c_three" class="time"></div>
+<div id="c_four" class="time"></div>
+<div id="c_five" class="time"></div>
+<div id="c_six" class="time"></div>
+
+
+<script>
+var one = "one";
+var two = "two";
+var three = "three";
+var four = "four";
+var five="five";
+var six ="six";
+var seven = "seven";
+var eight = "eight";
+var nine = "nine";
+var zero = "zero"
+
+function getFirstDigit(number){
+ if (number>61) return "time cannot be more than 60";
+ digits = "";
+
+if (number<=9) {
+	digits = zero;
+} else{
+ switch((number-(number%10))/10) {
+  case 1:
+   digits = one;
+	 break;
+  case 2:
+	 digits = two;
+	 break;
+  case 3:
+	 digits = three;
+   break;
+  case 4:
+	 digits = four;
+   break;
+  case 5:
+   digits = five;
+   break;
+  case 6:
+	 digits = six;
+   break;
+  case 7:
+   digits = seven;
+   break;
+  case 8:
+	 digits = eight;
+   break;
+  case 9:
+	 digits = nine;
+   break;
+}
+}
+return digits;
+}
+
+function getSecondDigit(number){
+	if (number>61) return "time cannot be more than 60";
+  digits = "";
+
+  switch(number%10) {
+   case 1:
+    digits = one;
+ 	 break;
+   case 2:
+ 	 digits = two;
+ 	 break;
+   case 3:
+ 	 digits = three;
+    break;
+   case 4:
+ 	 digits = four;
+    break;
+   case 5:
+    digits = five;
+    break;
+   case 6:
+ 	 digits = six;
+    break;
+   case 7:
+    digits = seven;
+    break;
+   case 8:
+ 	 digits = eight;
+    break;
+   case 9:
+ 	 digits = nine;
+    break;
+   case 0:
+	  digits = zero;
+		break;
+ }
+ return digits;
+}
+
+
+function createTime() {
+ var date = new Date();
+
+ var hours_first    = getFirstDigit(date.getHours());
+ var hours_second   = getSecondDigit(date.getHours());
+ var minutes_first  = getFirstDigit(date.getMinutes());
+ var minutes_second = getSecondDigit(date.getMinutes());
+ var seconds_first  = getFirstDigit(date.getSeconds());
+ var seconds_second = getSecondDigit(date.getSeconds());
+
+ G("c_one").innerHTML = hours_first;
+ G("c_two").innerHTML = hours_second;
+ G("c_three").innerHTML = minutes_first;
+ G("c_four").innerHTML = minutes_second;
+ G("c_five").innerHTML = seconds_first;
+ G("c_six").innerHTML = seconds_second;
+
+ }
+
+ setInterval(createTime,1000);
+
+ var x = document.getElementsByClassName("time");
+ var i;
+ for (i = 0; i < x.length; i++) {
+    x[i].style.float = "left";
+    x[i].style.border = "1px solid black";
+ }
+
+</script>
+</body>
+</html>
