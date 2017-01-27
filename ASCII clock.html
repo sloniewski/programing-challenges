@@ -41,6 +41,7 @@ body{
 
 
 <script>
+//asci numbers
 var one = ".....@@...<br>...@@@@...<br>...@@@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>";
 var two = "...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>......@@..<br>.....@@...<br>....@@@...<br>....@@....<br>...@@.....<br>..@@@@@@..<br>..@@@@@@..<br>";
 var three = "...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>......@@..<br>....@@@...<br>....@@@...<br>......@@..<br>..@@..@@..<br>..@@@@@@..<br>...@@@@...<br>";
@@ -54,6 +55,7 @@ var zero = "...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>..@@..@@..<br>..@@..@@..<b
 var dots = "..<br>..<br>@@<br>@@<br>..<br>..<br>@@<br>@@<br>..<br>..<br>";
 var blank  = "..<br>..<br>..<br>..<br>..<br>..<br>..<br>..<br>..<br>..<br>";
 
+//functions that tell clock refreshing function whitch digit to show
 function getFirstDigit(number){
  if (number>61) return "time cannot be more than 60";
  digits = "";
@@ -133,6 +135,7 @@ function getSecondDigit(number){
  return digits;
 }
 
+//function inserting digits into clock
 
 function createTime() {
  var date = new Date();
@@ -153,6 +156,7 @@ function createTime() {
  }
 
 
+//function for blinking dots
 b=1;
  function blink(){
 
@@ -168,8 +172,9 @@ b=1;
  ++b;
  }
 
+//intervals for clock refreshing
 
- setInterval(createTime,1000);
+setInterval(createTime,1000);
 
 setInterval(blink,500);
 
