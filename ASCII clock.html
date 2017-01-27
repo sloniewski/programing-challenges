@@ -22,7 +22,6 @@ body{
 	font-family: 'VT323', monospace;
 }
 </style>
-
 </head>
 
 <body>
@@ -33,23 +32,27 @@ body{
 
 <div id="c_one" class="time"></div>
 <div id="c_two" class="time"></div>
+<div class ="dots time"></div>
 <div id="c_three" class="time"></div>
 <div id="c_four" class="time"></div>
+<div class="dots time"></div>
 <div id="c_five" class="time"></div>
 <div id="c_six" class="time"></div>
 
 
 <script>
-var one = "one";
-var two = "two";
-var three = "three";
-var four = "four";
-var five="five";
-var six ="six";
-var seven = "seven";
-var eight = "eight";
-var nine = "nine";
-var zero = "zero"
+var one = ".....@@...<br>...@@@@...<br>...@@@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>";
+var two = "...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>......@@..<br>.....@@...<br>....@@@...<br>....@@....<br>...@@.....<br>..@@@@@@..<br>..@@@@@@..<br>";
+var three = "...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>......@@..<br>....@@@...<br>....@@@...<br>......@@..<br>..@@..@@..<br>..@@@@@@..<br>...@@@@...<br>";
+var four = "....@@....<br>...@@@....<br>..@@@.....<br>..@@......<br>..@@......<br>..@@@@@@..<br>..@@@@@@..<br>.....@@...<br>.....@@...<br>.....@@...<br>";
+var five="..@@@@@@..<br>..@@@@@@..<br>..@@......<br>..@@......<br>...@@@@...<br>...@@@@@..<br>......@@..<br>..@@..@@..<br>..@@@@@@..<br>...@@@@...";
+var six ="...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>..@@......<br>..@@@@....<br>..@@@@@...<br>..@@..@@..<br>..@@..@@..<br>..@@@@@@..<br>...@@@@...<br>";
+var seven = "..@@@@@@..<br>..@@@@@@..<br>......@@..<br>......@@..<br>.....@@...<br>.....@@...<br>....@@....<br>....@@....<br>...@@.....<br>...@@.....<br>";
+var eight = "...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>..@@..@@..<br>...@@@@...<br>...@@@@...<br>..@@..@@..<br>..@@..@@..<br>..@@@@@@..<br>...@@@@...<br>";
+var nine = "...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>..@@..@@..<br>...@@@@@..<br>....@@@@..<br>......@@..<br>..@@..@@..<br>..@@@@@@..<br>...@@@@...<br>";
+var zero = "...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>..@@..@@..<br>..@@..@@..<br>..@@..@@..<br>..@@..@@..<br>..@@..@@..<br>..@@@@@@..<br>...@@@@...";
+var dots = "..<br>..<br>@@<br>@@<br>..<br>..<br>@@<br>@@<br>..<br>..<br>";
+var blank  = "..<br>..<br>..<br>..<br>..<br>..<br>..<br>..<br>..<br>..<br>";
 
 function getFirstDigit(number){
  if (number>61) return "time cannot be more than 60";
@@ -147,17 +150,39 @@ function createTime() {
  G("c_four").innerHTML = minutes_second;
  G("c_five").innerHTML = seconds_first;
  G("c_six").innerHTML = seconds_second;
-
+ }
+ 
+ 
+b=1;
+ function blink(){
+ 
+  var element = document.getElementsByClassName("dots");
+ var a;
+ for (a = 0; a< element.length; a++) {
+   if ((b%2)==0) {
+   element[a].innerHTML= blank;
+	} else if ((b%2)>0) {
+	element[a].innerHTML=dots;
+	}
+ }
+ ++b;
  }
 
+
  setInterval(createTime,1000);
+ 
+setInterval(blink,500);
+
+
+
 
  var x = document.getElementsByClassName("time");
  var i;
  for (i = 0; i < x.length; i++) {
     x[i].style.float = "left";
-    x[i].style.border = "1px solid black";
+    x[i].style.border = "1px solid white";
  }
+
 
 </script>
 </body>
