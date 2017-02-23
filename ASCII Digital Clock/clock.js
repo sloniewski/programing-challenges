@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-<meta charset="utf-8">
-	<title>ASCII Clock</title>
-<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet"> 
-
-<script>
-
+//some basics to save me some typing
  function G(element){
   if (typeof(element)=="object") {
    return element;
@@ -17,38 +9,7 @@
  function S(element){
   return document.getElementById(element).style;
   }
-</script>
 
-<style>
-html{
-font-family: 'VT323', monospace;
-}
-
-.time{
-font-family: 'VT323', monospace;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div id="hours" class="time"></div>
-<div id="minutes" class="time"></div>
-<div id="seconds" class="time"></div>
-
-<div id="c_one" class="time"></div>
-<div id="c_two" class="time"></div>
-<div class ="dots time"></div>
-<div id="c_three" class="time"></div>
-<div id="c_four" class="time"></div>
-<div class="dots time"></div>
-<div id="c_five" class="time"></div>
-<div id="c_six" class="time"></div>
-
-
-<script>
 //asci numbers
 var one = ".....@@...<br>...@@@@...<br>...@@@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>.....@@...<br>";
 var two = "...@@@@...<br>..@@@@@@..<br>..@@..@@..<br>......@@..<br>.....@@...<br>....@@@...<br>....@@....<br>...@@.....<br>..@@@@@@..<br>..@@@@@@..<br>";
@@ -195,8 +156,3 @@ setInterval(blink,500);
     x[i].style.float = "left";
     x[i].style.border = "1px solid white";
  }
-
-
-</script>
-</body>
-</html>
