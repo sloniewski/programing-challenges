@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+	<title>Conway game of life</title>
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+ <meta charset="utf-8">
+<script>
+ function G(element){
+  if (typeof(element)=="object") {
+   return element;
+  }else{
+   return document.getElementById(element);
+  }}
+
+ function S(element){
+  return document.getElementById(element).style;
+  }
+
+	function L(element){
+		return document.getElementById(element).addEventListener;
+	}
+</script>
+
+<style>
+html{
+font-family: 'VT323', monospace;
+}
+
+#grid{
+	border: 1px solid black;
+}
+</style>
+</head>
+
+<body>
+<table id="grid"></table>
+
+
+
+<script>
+function getGrid(x,y){
+	var grid = [];
+	var line = Array(y)
+	for( i=0 ; i<x ; i++){
+		grid.push(line);
+	}
+	return grid;
+}
+
+function drawGrid(grid){
+	
+}
+
+function updateCells(grid)
+{
+	var tempGrid = [];
+	//iterate through grid and build new grid
+	return tempGrid;
+}
+
+
+</script>
+</body>
+</html>
