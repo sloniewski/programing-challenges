@@ -23,8 +23,9 @@ function getGrid(x,y){
 //convert a row of a grid into html table (string)
 function getRow(grid_row){
 	cells = "";
-	for( i=0 ; i<grid_row.length ; i++){
-		cell = "<td>"+grid_row[i]+"</td>";
+	for(var i=0 ; i<grid_row.length ; i++){
+    typeof (grid_row[i]) == "undefined" ? cell = "<td></td>" :
+    cell = "<td>"+grid_row[i]+"</td>";
 		cells += cell;
 	}
 	return ("<tr>"+cells+"</tr>");
@@ -32,7 +33,7 @@ function getRow(grid_row){
 
 //draw HTML a table out of rows
 function getTable(grid){
-	for( j=0 ; j<grid.length ; j++){
+	for(var j=0 ; j<grid.length ; j++){
 		row = getRow(grid[j]);
 		G("grid").insertAdjacentHTML('beforeend', row);
 	}
@@ -41,12 +42,10 @@ function getTable(grid){
 function updateCells(grid)
 {
 	var tempGrid = [];
-	//iterate through grid and build new grid
+  for
 	return tempGrid;
 }
 
-var grid = getGrid(4,50);
-grid[0].fill(".");
-grid[1].fill(".");
+var grid = getGrid(50,50);
 
 b = getTable(grid);
