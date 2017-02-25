@@ -3,6 +3,8 @@ table, td, tr {
   padding:0;
   margin:0;
   border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 td {
@@ -14,9 +16,21 @@ tr {
 }
 
 body{
-  background-color: gray;
+  background-color: #e6ef92;
 }
 
 html{
 font-family: 'VT323', monospace;
+}
+
+#dead {
+  background-color: gray;
+}
+
+#alive{
+  background-color: #98f442;
+}
+
+#error{
+    background-color: pink;
 }

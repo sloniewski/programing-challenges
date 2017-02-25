@@ -13,8 +13,8 @@
 // create an array that is to be used as grid
 function getGrid(x,y){
 	var grid = [];
-	var line = Array(y)
-	for( i=0 ; i<x ; i++){
+	var line = Array(y);
+  for( i=0 ; i<x ; i++){
 		grid.push(line);
 	}
 	return grid;
@@ -24,11 +24,15 @@ function getGrid(x,y){
 function getRow(grid_row){
 	cells = "";
 	for(var i=0 ; i<grid_row.length ; i++){
-    typeof (grid_row[i]) == "undefined" ? cell = "<td></td>" :
-    cell = "<td>"+grid_row[i]+"</td>";
-		cells += cell;
-	}
-	return ("<tr>"+cells+"</tr>");
+    if (grid_row[i] == "dead") {
+      cell = '<td id="dead"></td>'}
+        else if (grid_row[i] == "alive"){
+        cell = '<td id="alive"></td>';}
+          else{
+          cell = '<td id="error"></td>';}
+  cells += cell;
+      }
+		return ("<tr>"+cells+"</tr>");
 }
 
 //draw HTML a table out of rows
@@ -39,13 +43,18 @@ function getTable(grid){
 	}
 }
 
-function updateCells(grid)
-{
-	var tempGrid = [];
-  for
+function updateCells(grid){
+	var tempGrid = getGrid(grid.length, grid[0].length);
+  for ( k=0 ; k<grid.length ; k++){
+      for( m=0 ; m<grid[k].length ; m++){
+        //grid[k][m] ;
+      }
+  }
 	return tempGrid;
 }
 
-var grid = getGrid(50,50);
-
+var grid = getGrid(10,10);
+grid[7][9]=("alive");
+grid[2][3]=("alive");
+console.log(grid[9]);
 b = getTable(grid);
