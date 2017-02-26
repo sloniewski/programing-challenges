@@ -13,48 +13,52 @@
 // create an array that is to be used as grid
 function getGrid(x,y){
 	var grid = [];
-	var line = Array(y);
-  for( i=0 ; i<x ; i++){
+	var line = new Array(y); // <-this needs FIXING
+  for(var i=0 ; i<x ; i++){
 		grid.push(line);
 	}
 	return grid;
 }
 
-//convert a row of a grid into html table (string)
-function getRow(grid_row){
-	cells = "";
-	for(var i=0 ; i<grid_row.length ; i++){
-    if (grid_row[i] == "dead") {
-      cell = '<td id="dead"></td>'}
-        else if (grid_row[i] == "alive"){
-        cell = '<td id="alive"></td>';}
-          else{
-          cell = '<td id="error"></td>';}
-  cells += cell;
-      }
-		return ("<tr>"+cells+"</tr>");
-}
-
 //draw HTML a table out of rows
 function getTable(grid){
-	for(var j=0 ; j<grid.length ; j++){
-		row = getRow(grid[j]);
-		G("grid").insertAdjacentHTML('beforeend', row);
+  for(var j=0 ; j<grid.length ; j++){
+    var row = "";
+    for(var i=0 ; i<grid[j].length ; i++){
+      cell = '<td id="'+grid[j][i]+'">'+"row:"+j+",cell:"+i+",id:"+grid[j][i]+'</td>'
+      console.log("processing: row-"+j+" cell-"+i)
+      row += cell;}
+	G("grid").insertAdjacentHTML('beforeend', ("<tr>"+row+"</tr>"));
 	}
 }
 
 function updateCells(grid){
 	var tempGrid = getGrid(grid.length, grid[0].length);
   for ( k=0 ; k<grid.length ; k++){
+      console.log("row-"+k);
       for( m=0 ; m<grid[k].length ; m++){
-        //grid[k][m] ;
+      console.log("cell-"+m)
       }
   }
 	return tempGrid;
 }
 
-var grid = getGrid(10,10);
-grid[7][9]=("alive");
-grid[2][3]=("alive");
-console.log(grid[9]);
+//var grid = getGrid(3,3);
+var grid =[
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+        ]
+grid[0][0] = "a";
+grid[0][1] = "b";
+grid[0][2] = "c";
+grid[1][0] = "d";
+grid[1][1] = "e";
+grid[1][2] = "f";
+grid[2][0] = "g";
+grid[2][1] = "h";
+grid[2][2] = "i";
+//grid[3][]
+console.log(grid);
+
 b = getTable(grid);
