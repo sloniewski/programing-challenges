@@ -1,7 +1,7 @@
 <?php
 $subject = ["Mark", "Milos", "Martin", "Robert"];
-$verb = [ "ate", "kicked", "threw", "saw"];
-$object =[ "apple", "orange", "banana", "potato"];
+$verb = [ "ate", "touched", "threw", "sniffed"];
+$object =[ "an apple", "an orange", "a banana", "a potato"];
 
 if (isset($_GET['clicked'])){
   $rand_subject = $subject[rand(0, (count($subject)-1))];
