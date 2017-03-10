@@ -48,5 +48,9 @@ function updateCells(grid)
 var grid = getGrid(4,50);
 grid[0].fill(".");
 grid[1].fill(".");
+grid[0,0] = "a";
+grid[1,0] = "b";
+
+
 
 b = getTable(grid);

@@ -1,4 +1,5 @@
 <?php
+//16. reverse a string
 $string = "abcdefghij";
 function reverse($string){
   $str_reversed = "";
@@ -6,6 +7,4 @@ function reverse($string){
     $letter = substr($string,(strlen($string)-1-$i),1);
     $str_reversed .= $letter;}
   return $str_reversed;}
-$reversed = reverse($string);
-print $reversed;
 ?>
