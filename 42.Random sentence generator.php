@@ -4,6 +4,9 @@ $verb = [ "ate", "kicked", "threw", "saw"];
 $object =[ "apple", "orange", "banana", "potato"];
 
 if (isset($_GET['clicked'])){
+  $rand_subject = $subject[rand(0, (count($subject)-1))];
+  $rand_verb = $verb[rand(0,(count($verb)-1))];
+  $rand_object = $object[rand(0,(count($object)-1))];
   print $rand_subject." ".$rand_verb." ".$rand_object;
 }
 ?>
