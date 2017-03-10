@@ -1,13 +1,14 @@
 <?php
-if (isset($_POST['clicked'])){};
+$subject = ["Mark", "Milos", "Martin", "Robert"];
+$verb = [ "ate", "kicked", "threw", "saw"];
+$object =[ "apple", "orange", "banana", "potato"];
 
-
-$subject = [];
-$verb = [];
-$object =[];
+if (isset($_GET['clicked'])){
+  print $rand_subject." ".$rand_verb." ".$rand_object;
+}
 ?>
 
-<form>
+<form method="get">
   <input type="hidden" name="clicked" value="clicked">
   <input type="submit" value="Generate">
 </form>
