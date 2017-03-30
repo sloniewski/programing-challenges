@@ -10,6 +10,7 @@ turn = "cross";
 circle_symbol = '<i class="fa fa-circle-o" aria-hidden="true"></i>';
 cross_symbol = '<i class="fa fa-times" aria-hidden="true"></i>';
 symbol = cross_symbol;
+game_ended = 0;
 
 function swithTurn()
 {
@@ -34,42 +35,63 @@ for (a = 0; a < fields.length; a++) {
 
 function fill()
 {
+    if (game_ended == 1) return;
     var status = this.getAttribute("status");
     if (status == "filled") return;
+
     this.setAttribute("status", "filled");
     this.innerHTML = symbol;
+
     checkWhoWins();
     swithTurn();
 }
 
 function checkWhoWins()
 {
-    if (
-      G("cell1").innerHTML == circle_symbol &&
-      G("cell2").innerHTML == circle_symbol &&
-      G("cell3").innerHTML == circle_symbol
-    ){
+    var top_row = [
+      G("cell1").innerHTML,
+      G("cell2").innerHTML,
+      G("cell3").innerHTML
+    ]
+
+    var middle_row = [
+      G("cell4").innerHTML,
+      G("cell5").innerHTML,
+      G("cell6").innerHTML
+    ]
+
+    var bottom_row = [
+        G("cell7").innerHTML,
+        G("cell8").innerHTML,
+        G("cell9").innerHTML
+    ]
+
+    function identical(array) {
+        for(var i = 0; i < array.length - 1; i++) {
+            if(array[i] !== array[i+1] || array[i] == "") {
+                return false;
+            }
+        }
+    return true;
+    }
+
+    if (identical(top_row)){
         G("game-status").innerHTML = turn+" Wins! Game Ended!";
         G("row1").style.background = "red";
+        game_ended = 1;
     }
 
-    if (
-      G("cell4").innerHTML == circle_symbol &&
-      G("cell5").innerHTML == circle_symbol &&
-      G("cell6").innerHTML == circle_symbol
-    ){
+    if (identical(middle_row)){
         G("game-status").innerHTML = turn+" Wins! Game Ended!";
         G("row2").style.background = "red";
+        game_ended = 1;
     }
 
-    switch(cross_symbol){
-        case G("cell7").innerHTML:
-            // no break
-        case G("cell8").innerHTML:
-            // no break
-        case G("cell9").innerHTML:
-            G("game-status").innerHTML = turn+" Wins! Game Ended!";
-            G("row3").style.background = "red";
+    if (identical(bottom_row)){
+        G("game-status").innerHTML = turn+" Wins! Game Ended!";
+        G("row3").style.background = "red";
+        game_ended = 1;
     }
+
 
 }
