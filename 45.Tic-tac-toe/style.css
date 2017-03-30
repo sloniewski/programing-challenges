@@ -1,0 +1,21 @@
+.game-square{
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  float:left;
+  font-size: 90px;
+  text-align:center;
+}
+
+.clear{
+    float: none;
+    clear: both;
+}
+
+#game-status{
+  font-size: 2em;
+}
+
+.row{
+    width: 312px;
+}
