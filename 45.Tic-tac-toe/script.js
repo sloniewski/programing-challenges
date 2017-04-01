@@ -148,14 +148,9 @@ function resetGame()
 {
   G('game-status').innerHTML = '';
   gameEnded = 0;
-  for (var i = 0; i < vicotoryConditions.length; i++) {
-    tempCells = vicotoryConditions[i];
-    for (var j = 0; j < tempCells.length; j++) {
-      G(tempCells[j]).innerHTML = '';
-    }
-  }
-
   for (var n = 0; n < fields.length; n++) {
     fields[n].style.background = 'white';
+    fields[n].setAttribute('status', '');
+    fields[n].innerHTML = '';
   }
 }
