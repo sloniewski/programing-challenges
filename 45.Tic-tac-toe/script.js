@@ -31,7 +31,7 @@ function swithTurn()
 }
 
 for (a = 0; a < fields.length; a++) {
-  fields[a].addEventListener('click', gameAction);;
+  fields[a].addEventListener('click', gameAction);
 }
 
 //section with game actions
@@ -60,7 +60,7 @@ function endGame(array)
 function identical(array)
 {
   for (var i = 0; i < array.length - 1; i++) {
-    if (array[i] !== array[i + 1] || array[i] == '') {
+    if (array[i] !== array[i + 1] || array[i] === '') {
       return false;
     }
   }
@@ -140,7 +140,7 @@ function checkVictory()
 
     if (identical(tempArray)) endGame(vicotoryConditions[i]);
   }
-};
+}
 
 G('reset').addEventListener('click', resetGame);
 
