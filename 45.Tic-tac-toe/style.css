@@ -1,10 +1,27 @@
 .game-square{
   width: 100px;
   height: 100px;
-  border: 2px solid black;
   float:left;
   font-size: 90px;
+  text-shadow: 2px -2px 3px rgba(150, 150, 150, 1);
   text-align:center;
+  border: 2px solid white;
+}
+
+#cell2{
+  border-color: white black black black;
+}
+
+#cell4{
+  border-color: black black black white;
+}
+
+#cell6{
+  border-color: black white black black;
+}
+
+#cell8{
+  border-color: black black white black;
 }
 
 .clear{

@@ -1,97 +1,161 @@
- function G(element){
-  if (typeof(element)=="object") {
-   return element;
-  }else{
-   return document.getElementById(element);
-  }}
+function G(element)
+{
+  if (typeof (element) == 'object') {
+    return element;
+  }else {
+    return document.getElementById(element);
+  }
+}
 
-turn = "cross";
+turn = 'cross';
 
-circle_symbol = '<i class="fa fa-circle-o" aria-hidden="true"></i>';
-cross_symbol = '<i class="fa fa-times" aria-hidden="true"></i>';
-symbol = cross_symbol;
-game_ended = 0;
+circleSymbol = '<i class="fa fa-circle-o" aria-hidden="true"></i>';
+crossSymbol = '<i class="fa fa-times" aria-hidden="true"></i>';
+symbol = crossSymbol;
+gameEnded = 0;
+fields = document.getElementsByClassName('game-square');
 
 function swithTurn()
 {
-    if(turn == "cross"){
-        turn = "circle";
-        symbol = circle_symbol;
-        console.log("switching turn: cirlce");
-    } else if (turn == "circle") {
-      turn = "cross";
-      symbol = cross_symbol;
-      console.log("switching turn: cross");
-    } else {
-      console.log("Something went wrong: can`t set turn");
-    }
+  if (turn == 'cross') {
+    turn = 'circle';
+    symbol = circleSymbol;
+    console.log('switching turn: cirlce');
+  } else if (turn == 'circle') {
+    turn = 'cross';
+    symbol = crossSymbol;
+    console.log('switching turn: cross');
+  } else {
+    console.log('Something went wrong: can`t set turn');
+  }
 }
 
-
-var fields = document.getElementsByClassName("game-square");
 for (a = 0; a < fields.length; a++) {
-    fields[a].addEventListener('click', fill);;
+  fields[a].addEventListener('click', gameAction);;
 }
 
-function fill()
+//section with game actions
+function gameAction()
 {
-    if (game_ended == 1) return;
-    var status = this.getAttribute("status");
-    if (status == "filled") return;
+  if (gameEnded == 1) return;
+  var status = this.getAttribute('status');
+  if (status == 'filled') return;
 
-    this.setAttribute("status", "filled");
-    this.innerHTML = symbol;
+  this.setAttribute('status', 'filled');
+  this.innerHTML = symbol;
 
-    checkWhoWins();
-    swithTurn();
+  checkVictory();
+  swithTurn();
 }
 
-function checkWhoWins()
+function endGame(array)
 {
-    var top_row = [
-      G("cell1").innerHTML,
-      G("cell2").innerHTML,
-      G("cell3").innerHTML
-    ]
+  G('game-status').innerHTML = turn + ' Wins! Game Ended!';
+  gameEnded = 1;
+  for (var k = 0; k < array.length; k++) {
+    G(array[k]).style.background = 'rgba(30, 190, 28, 0.47)';
+  }
+}
 
-    var middle_row = [
-      G("cell4").innerHTML,
-      G("cell5").innerHTML,
-      G("cell6").innerHTML
-    ]
+function identical(array)
+{
+  for (var i = 0; i < array.length - 1; i++) {
+    if (array[i] !== array[i + 1] || array[i] == '') {
+      return false;
+    }
+  }
 
-    var bottom_row = [
-        G("cell7").innerHTML,
-        G("cell8").innerHTML,
-        G("cell9").innerHTML
-    ]
+  return true;
+}
 
-    function identical(array) {
-        for(var i = 0; i < array.length - 1; i++) {
-            if(array[i] !== array[i+1] || array[i] == "") {
-                return false;
-            }
-        }
-    return true;
+topRow = [
+  'cell1',
+  'cell2',
+  'cell3',
+];
+
+middleRow = [
+  'cell4',
+  'cell5',
+  'cell6',
+];
+
+bottomRow = [
+  'cell7',
+  'cell8',
+  'cell9',
+];
+
+leftColumn = [
+  'cell1',
+  'cell4',
+  'cell7',
+];
+
+middleColumn = [
+  'cell2',
+  'cell5',
+  'cell8',
+];
+
+rightColumn = [
+  'cell3',
+  'cell6',
+  'cell9',
+];
+
+downSlash = [
+  'cell1',
+  'cell5',
+  'cell9',
+];
+
+upSlash = [
+  'cell3',
+  'cell5',
+  'cell7',
+];
+
+vicotoryConditions = [
+  topRow,
+  middleRow,
+  bottomRow,
+  leftColumn,
+  middleColumn,
+  rightColumn,
+  downSlash,
+  upSlash,
+];
+
+function checkVictory()
+{
+
+  for (var i = 0; i < vicotoryConditions.length; i++) {
+    tempArray = [];
+    tempCells = vicotoryConditions[i];
+    for (var j = 0; j < tempCells.length; j++) {
+      cellContent = G(tempCells[j]).innerHTML;
+      tempArray.push(cellContent);
     }
 
-    if (identical(top_row)){
-        G("game-status").innerHTML = turn+" Wins! Game Ended!";
-        G("row1").style.background = "red";
-        game_ended = 1;
+    if (identical(tempArray)) endGame(vicotoryConditions[i]);
+  }
+};
+
+G('reset').addEventListener('click', resetGame);
+
+function resetGame()
+{
+  G('game-status').innerHTML = '';
+  gameEnded = 0;
+  for (var i = 0; i < vicotoryConditions.length; i++) {
+    tempCells = vicotoryConditions[i];
+    for (var j = 0; j < tempCells.length; j++) {
+      G(tempCells[j]).innerHTML = '';
     }
+  }
 
-    if (identical(middle_row)){
-        G("game-status").innerHTML = turn+" Wins! Game Ended!";
-        G("row2").style.background = "red";
-        game_ended = 1;
-    }
-
-    if (identical(bottom_row)){
-        G("game-status").innerHTML = turn+" Wins! Game Ended!";
-        G("row3").style.background = "red";
-        game_ended = 1;
-    }
-
-
+  for (var n = 0; n < fields.length; n++) {
+    fields[n].style.background = 'white';
+  }
 }
