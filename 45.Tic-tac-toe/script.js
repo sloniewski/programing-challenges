@@ -53,7 +53,7 @@ function endGame(array)
   G('game-status').innerHTML = turn + ' Wins! Game Ended!';
   gameEnded = 1;
   for (var k = 0; k < array.length; k++) {
-    G(array[k]).style.background = 'rgba(30, 190, 28, 0.47)';
+    G(array[k]).style.background = 'rgba(117, 255, 117, 6)';
   }
 }
 

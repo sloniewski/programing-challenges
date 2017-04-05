@@ -5,23 +5,16 @@
   font-size: 90px;
   text-shadow: 2px -2px 3px rgba(150, 150, 150, 1);
   text-align:center;
-  border: 2px solid white;
 }
 
-#cell2{
-  border-color: white black black black;
+.row-borders{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
-#cell4{
-  border-color: black black black white;
-}
-
-#cell6{
-  border-color: black white black black;
-}
-
-#cell8{
-  border-color: black black white black;
+.col-borders{
+    border-left: 2px solid black;
+    border-right: 2px solid black;
 }
 
 .clear{
