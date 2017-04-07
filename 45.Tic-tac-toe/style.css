@@ -29,3 +29,39 @@
 .row{
     width: 312px;
 }
+
+.scoreBoard{
+    text-align:center;
+    float: left;
+    border: 1px solid black;
+    box-shadow: 2px -2px 3px rgba(150, 150, 150, 1);
+    font-size: 24px;
+    border-radius: 8px;
+}
+
+.label{
+    padding: 3px;
+    border-radius: 5px;
+    margin: 0px 5px 0px 5px;
+}
+
+.game{
+    float: left;
+}
+
+.myButton{
+    border: 1px solid black;
+    background-color: rgba(117, 255, 117, 6);
+    border-radius: 3px;
+    font-size: 1em;
+    color: black;
+}
+
+.myButton:hover{
+    box-shadow: 0px 0px 5px #788591;
+}
+
+.myButton:active{
+    color: #788591;
+    border: 1px solid #788591;
+}

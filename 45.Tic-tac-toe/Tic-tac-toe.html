@@ -9,31 +9,46 @@
   <title>Tic tac toe</title>
 </head>
 <body>
-<div class="contet">
-  <div id="row1" class="row">
-    <div id="cell1" class="game-square"></div>
-    <div id="cell2" class="game-square col-borders"></div>
-    <div id="cell3" class="game-square"></div>
+<div class="content">
+    <div class="game">
+         <div id="row1" class="row">
+            <div id="cell1" class="game-square"></div>
+            <div id="cell2" class="game-square col-borders"></div>
+            <div id="cell3" class="game-square"></div>
+            <div class="clear"></div>
+        </div>
+        <div id="row2" class="row">
+            <div id="cell4" class="game-square row-borders"></div>
+            <div id="cell5" class="game-square col-borders row-borders"></div>
+            <div id="cell6" class="game-square row-borders"></div>
+            <div class="clear"></div>
+        </div>
+        <div id="row3" class="row">
+            <div id="cell7" class="game-square"></div>
+            <div id="cell8" class="game-square col-borders"></div>
+            <div id="cell9" class="game-square"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="scoreBoard">
+        <div class="player">
+            <div class="label">Cross</div>
+            <div id="crossScore" class="label">0</div>
+        </div>
+        <div class="player">
+            <div class="label">Circle</div>
+            <div id="circleScore" class="label">0</div>
+        </div>
+    </div>
     <div class="clear"></div>
-  </div>
-  <div id="row2" class="row">
-    <div id="cell4" class="game-square row-borders"></div>
-    <div id="cell5" class="game-square col-borders row-borders"></div>
-    <div id="cell6" class="game-square row-borders"></div>
-    <div class="clear"></div>
-  </div>
-  <div id="row3" class="row">
-    <div id="cell7" class="game-square"></div>
-    <div id="cell8" class="game-square col-borders"></div>
-    <div id="cell9" class="game-square"></div>
-    <div class="clear"></div>
-   </div>
 </div>
 
-<footer>
-  <button id="reset">Reset</button>
+<div class="panel">
+  <button id="reset" class="myButton">Reset Game</button>
+  <button id="resetScore" class="myButton">Reset Score</button>
   <div id="game-status"></div>
-</footer>
+</div>
     <script src="script.js" type="text/javascript"></script>
 </body>
 </html>
