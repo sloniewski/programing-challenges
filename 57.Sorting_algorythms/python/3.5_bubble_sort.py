@@ -1,19 +1,14 @@
-list = [34, 67 ,987, 23, 56, 786]
-print (list)
-
 def bubbleSort(list):
-    counter = True
-    while counter == True:
+    counter = len(list)
+    while counter > 0:
         for i in range(len(list)):
-            x = (list[len(list)-i-1])
-            y = (list[len(list)-i-2])
-            counter = False
-            if x > y:
-                list[len(list)-i-1] = y
-                list[len(list)-i-2] = x
-                counter = True
-        print (counter)
+            if (i-1) < 0:
+                continue
+            x = (list[len(list)-i])
+            y = (list[len(list)-i-1])
+            if x < y:
+                list[len(list)-i] = y
+                list[len(list)-i-1] = x
+                counter += i
+        counter -=1
     return list
-
-#sorted = bubbleSort(list)
-print( list [-2:-1])
