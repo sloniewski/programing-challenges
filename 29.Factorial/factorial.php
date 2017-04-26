@@ -4,10 +4,19 @@ function factorial($number)
     if ($number <= 1) {
         return 1;
     }
-    return ($number * factorial($number-1));
+    return ($number * factorial($number - 1));
 }
 
+// multi factorial is a factorial with step larger than one
+function multiFactorial($number, $step)
+{
+    if ($number <= 1) {
+        return 1;
+    }
+    return ($number * multifactorial($number - $step, $step));
+}
 
+//super factorial is a factorial of factorials (factorial inception)
 function superFactorial($number)
 {
     $array_temp = [];
