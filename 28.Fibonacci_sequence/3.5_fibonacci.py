@@ -6,3 +6,10 @@ def fibonacci_loop(n):
         print (c)
         a = b
         b = c
+
+
+def fibonacci_recursion(n,a = 0, b = 1):
+    result = a + b
+    print (result)
+    if result < n:
+        fibonacci_recursion(n, b, result)
