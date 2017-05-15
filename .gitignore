@@ -1,0 +1,8 @@
+*.sublime-*
+tags
+.idea
+__pycache__
+*.pyc
+.settings
+.project
+.pydevproject
