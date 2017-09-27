@@ -1,6 +1,6 @@
 from __future__ import division
 import re
-print ('Please eneter your:')
+print('Please eneter your:')
 
 
 def validateInput(text):
@@ -16,7 +16,7 @@ def inputWeight():
     if validateInput(weight) is True:
         return weight
     else:
-        print ('Sorry, only numbers allowed')
+        print('Sorry, only numbers allowed')
         return inputWeight()
 
 
@@ -25,7 +25,7 @@ def inputHeight():
     if validateInput(height) is True:
         return height
     else:
-        print ('Sorry, only numbers allowed')
+        print('Sorry, only numbers allowed')
         return inputHeight()
 
 
@@ -34,21 +34,21 @@ height = inputHeight()
 weight = int(weight)
 height = int(height)
 BMI = weight / ((height/100)**2)
-print ('Your BMI is: ' + str(BMI))
+print('Your BMI is: ' + str(BMI))
 
 if BMI < 15.0:
-    print ('You are very severly underwieght, get help.')
+    print('You are very severly underwieght, get help.')
 elif BMI <= 16.0:
-    print ('You are severly underweight,seriously eat more.')
+    print('You are severly underweight,seriously eat more.')
 elif BMI <= 18.5:
-    print ('You are underweight, eat more')
+    print('You are underweight, eat more')
 elif BMI <= 25:
-    print ('You have normal weight, keep it up!')
+    print('You have normal weight, keep it up!')
 elif BMI <= 30:
-    print ('You are overweight or too short, consider diet.')
+    print('You are overweight or too short, consider diet.')
 elif BMI <= 35:
-    print ('You are moderatley obese, eat less.')
+    print('You are moderatley obese, eat less.')
 elif BMI <= 40:
-    print ('You are severly obese, quit eating!')
+    print('You are severly obese, quit eating!')
 else:
-    print ('You are very severly obese, get help, skip the wafer-thin mint')
+    print('You are very severly obese, get help, skip the wafer-thin mint')
