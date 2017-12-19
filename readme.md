@@ -1,5 +1,7 @@
 ## Programing challenges version 1.4
-attempt at solving following problems in javasctip,php and python
+
+Thease are small exercises / problems or algorythms that are meant to develop coding skills. 
+My attempt at solving following problems in javasctip,php and python.
 
 0. Name Generator (+credentials)
 1. Higher/Lower Heads/Tails
