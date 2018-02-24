@@ -3,8 +3,8 @@ def FizzBizz(n):
     while x < n:
         x = x + 1
         if x % 3 != 0 and x % 5 != 0:
-            print x
+            print(x)
         if x % 3 == 0:
-            print 'Fizz'
+            print('Fizz')
         if x % 5 == 0:
-            print 'Bizz'
+            print('Bizz')
