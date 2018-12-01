@@ -9,26 +9,10 @@ interface Iterator<T> {
     throw?(): IteratorResult<T>;
 }
 
-
-class Options
-{
-    public max_val_set?: boolean = false;
-    public max_num_set?: boolean = false;
-
-    constructor (
-        public max_value?: number,
-        public max_num?: number
-    ){
-        if (this.max_value != undefined) {
-            this.max_val_set = true;
-        }
-
-        if (this.max_num != undefined) {
-            this.max_num_set = true;
-        }
-    }
+class Options{
+    public max_number?: number;
+    public max_value?: number;
 }
-
 
 
 class Fib implements Iterator<number>
@@ -37,25 +21,38 @@ class Fib implements Iterator<number>
     private second_num: number = 1
     private counter: number = 0;
 
+    private max_val_set: boolean = false;
+    private max_num_set: boolean = false;
+    private max_number: number;
+    private max_value: number;
+
     constructor(
         public options: Options
     ){
-        this.options = options;
+        if (options.hasOwnProperty('max_value')) {
+            this.max_value = options.max_value;
+            this.max_val_set = true;
+        }
+
+        if(options.hasOwnProperty('max_number')){
+            this.max_number = options.max_number;
+            this.max_num_set = true;
+        }
     }
 
     public next(): IteratorResult<number>{
         var temp = this.first_num;
         var status = false;
 
-        if (this.options.max_num_set == false){
-            this.options.max_num = this.counter
+        if (this.max_num_set == false){
+            this.max_number = this.counter
         }
 
-        if (this.options.max_val_set == false) {
-            this.options.max_value = temp
+        if (this.max_val_set == false) {
+            this.max_value = temp
         }
 
-        if (this.options.max_num >= this.counter && temp <= this.options.max_value) {
+        if (this.max_number >= this.counter && temp <= this.max_value) {
             this.first_num = this.second_num;
             this.second_num = temp + this.second_num;
             this.counter += 1;
@@ -74,8 +71,8 @@ class Fib implements Iterator<number>
     }
 }
 
-var o = new Options(22, 3)
-var test_fib = new Fib(o)
+var test_fib = new Fib({max_number: 23})
+
 for (let x of test_fib ){
     console.log(x)
 }
