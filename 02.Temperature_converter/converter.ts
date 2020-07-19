@@ -1,89 +1,83 @@
-abstract class AbstractConverter{
-    public abstract getCelsius();
-    public abstract getKelvin();
-    public abstract getFarenheit();
-    public temperature: Temperature;
+abstract class AbstractTemperature {
+    protected temperature: number;
 
-    public constructor(temperature) {
-        this.temperature = temperature;
+    constructor(temperature: number) {
+        this.temperature = temperature
     }
-
+    public abstract toCelsius();
+    public abstract toKelvin();
+    public abstract toFarenheit();
 }
 
-class BaseCeliusConverter extends AbstractConverter{
-    public getCelsius(): number {
-        return this.temperature.getCelsius();
+class Celsius extends AbstractTemperature 
+{
+    public toCelsius(): number {
+        return this.temperature;
     }
-    public getKelvin(): number {
-        return this.temperature.celsius + 273.15;
+    public toKelvin(): number {
+        return this.temperature + 273.15;
     }
-    public getFarenheit(): number {
-        return (this.temperature.celsius * 1.8) + 32;
-    }
-}
-
-class BaseKelvinConverter extends AbstractConverter {
-    public getCelsius(): number {
-        return this.temperature.kelvin - 273.15;
-    }
-    public getKelvin(): number {
-        return this.temperature.kelvin;
-    }
-    public getFarenheit(): number {
-        return (this.getCelsius() * 1.8) + 32;
+    public toFarenheit(): number {
+        return (this.temperature * 1.8) + 32;
     }
 }
 
-class BaseFarenheitConverter extends AbstractConverter {
-    public getCelsius(): number {
-        return this.temperature.getCelsius();
+class Kelvin extends AbstractTemperature 
+{
+    public toCelsius(): number {
+        return this.temperature - 273.15;
     }
-    public getKelvin(): number {
-        return this.temperature.getKelvin();
+    public toKelvin(): number {
+        return this.temperature;
     }
-    public getFarenheit(): number {
-        return this.temperature.getFarenheit();
+    public toFarenheit(): number {
+        return ((this.temperature + 273.15) * 1.8) + 32;
     }
 }
 
+class Farenheit extends AbstractTemperature 
+{
+    public toCelsius(): number {
+        return this.temperature;
+    }
+    public toKelvin(): number {
+        return this.temperature;
+    }
+    public toFarenheit(): number {
+        return this.temperature;
+    }
+}
 
-class Temperature {
+class Converter {
+    private type: string;
+    private temperature: AbstractTemperature;
 
-    public celsius!: number;
-    public farenheit!: number;
-    public kelvin!: number;
-    public converter!: AbstractConverter;
-
-    constructor(
-        celsius?: number,
-        farenheit?: number,
-        kelvin?: number,
-        ) {
-        this.kelvin = kelvin;
-        this.celsius = celsius;
-        this.farenheit = farenheit
-        if (this.kelvin !== undefined) {
-            this.converter = new BaseKelvinConverter(this) } 
-        else if (this.farenheit !== undefined) {
-            this.converter = new BaseFarenheitConverter(this)}
-        else if (this.celsius !== undefined) {
-            this.converter = new BaseCeliusConverter(this)
-        } else {
-            throw new Error('temperature of any type not provided')
+    constructor(type: string, temperature: number) {
+        switch (type) {
+            case 'celsius':
+                this.temperature = new Celsius(temperature);
+                break;
+            case 'kelvin':
+                this.temperature = new Kelvin(temperature);
+                break;
+            case 'farenheit':
+                this.temperature = new Farenheit(temperature);
+                break
+            default:
+                throw new Error('unknown temperature type')
         }
     }
 
-    public getCelsius(): number{
-        return this.converter.getCelsius();
+    public toCelsius(): number {
+        return this.temperature.toCelsius();
     }
-    public getKelvin(): number {
-        return this.converter.getKelvin();
+    public toKelvin(): number {
+        return this.temperature.toKelvin();
     }
-    public getFarenheit(): number {
-        return this.converter.getFarenheit();
+    public toFarenheit(): number {
+        return this.temperature.toFarenheit();
     }
-
 }
 
-var temp = new Temperature(0)
-console.log(temp.getFarenheit())
+const converter = new Converter('celsius', 14);
+console.log(converter.toFarenheit());

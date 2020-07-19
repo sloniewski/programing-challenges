@@ -71,9 +71,12 @@ class Fib implements Iterator<number>
     }
 }
 
-var test_fib = new Fib({max_number: 23})
-
+var test_fib = new Fib({max_number: 5})
 for (let x of test_fib ){
     console.log(x)
 }
 
+var test_fib_2 = new Fib({ max_value: 60})
+for (let x of test_fib_2) {
+    console.log(x)
+}
